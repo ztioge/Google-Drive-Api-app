@@ -15,7 +15,7 @@ $files = new Soramugi\GoogleDrive\Files($client);
 foreach ($files->listFiles()->getItems() as $item) {
     if (!$item->getLabels()->getTrashed()) {
         echo "file : {$item->getTitle()}\n";
-        echo "{$item->getId()}\n";
+        //echo "{$item->getId()}\n";
     }
 }
 ?>
