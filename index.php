@@ -9,9 +9,10 @@ $client->setClientSecret('nP-1rnofnic7H2LehwqIoZh9');
 $token = '{"access_token":"ya29.Ci-JA7xgd2TFITLuUeL-QzTY5C0dphFnKfVThPcggdmyXogNF6fcAFndnojslWf3pA","expires_in":3600,"refresh_token":"1\/w1Bz11LUl-qHaxZgJo_nV7TSIAi1jYT7_2CxXMSUVa4","token_type":"Bearer","created":1477561005}';
 $client->setAccessToken($token);
 
-
+#Objektua sortzen degu
 $files = new Soramugi\GoogleDrive\Files($client);
 
+//Carpeta bakoitzeko barruan dauden artxiboak listatzen ditugu, ta kerpetak ere.
 foreach ($files->listFiles()->getItems() as $item) {
     if (!$item->getLabels()->getTrashed()) {
         echo "file : {$item->getTitle()}\n";

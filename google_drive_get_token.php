@@ -1,20 +1,5 @@
 <?php
-#
-# google drive access_tokenの取得
-#
-# https://code.google.com/apis/console/
-# googleのプロジェクト作成
-#
-# 「Drive API」の項目ON
-#
-# client_id,client_secretの取得
-# redirect_urlは「http://localhost」
-#
-# php composer.phar install
-#
-# localhostでアクセスできる所にこのファイルをシンボリックリンクでも張る
-#
-# アクセス、認証、done
+#Para conseguir el acces token de google
 #
 require __DIR__ .'/vendor/autoload.php';
 $client = new Soramugi\GoogleDrive\Client;
@@ -27,5 +12,5 @@ if (isset($_GET['code'])) {
    echo $client->getAccessToken();
 } else {
   $authUrl = $client->createAuthUrl();
-  echo "<a href='{$authUrl}'>認証ページへ</a>";
+  echo "<a href='{$authUrl}'URL</a>";
 }
