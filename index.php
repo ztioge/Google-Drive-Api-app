@@ -1,4 +1,6 @@
-<?php
+<!DOCTYPE html>
+<html>
+   <?php
 require_once __DIR__ . '/vendor/autoload.php';
 
 $client = new Soramugi\GoogleDrive\Client;
@@ -12,11 +14,13 @@ $client->setAccessToken($token);
 #Objektua sortzen degu
 $files = new Soramugi\GoogleDrive\Files($client);
 
-//Carpeta bakoitzeko barruan dauden artxiboak listatzen ditugu, ta kerpetak ere.
+//Carpeta bakoitzeko barruan dauden artxiboak listatzen ditugu, ta karpetak ere.
+echo '<table><tr>';
 foreach ($files->listFiles()->getItems() as $item) {
     if (!$item->getLabels()->getTrashed()) {
-        echo "file : {$item->getTitle()}\n";
-        //echo "{$item->getId()}\n";
+         echo '<td>' ."file : {$item->getTitle()}\n". '</td>';
     }
 }
-?>
+echo '</tr></table>';
+?> 
+</html>
