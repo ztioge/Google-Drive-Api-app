@@ -13,14 +13,15 @@ $client->setAccessToken($token);
 
 #Objektua sortzen degu
 $files = new Soramugi\GoogleDrive\Files($client);
+$file = new Soramugi\GoogleDrive\File($client);
+$titulo = "";
 
 //Carpeta bakoitzeko barruan dauden artxiboak listatzen ditugu, ta karpetak ere.
-echo '<table><tr>';
 foreach ($files->listFiles()->getItems() as $item) {
     if (!$item->getLabels()->getTrashed()) {
          echo '<td>' ."file : {$item->getTitle()}\n". '</td>';
     }
 }
-echo '</tr></table>';
+$files->listFiles()->getItems()->getTitle();
 ?> 
 </html>
