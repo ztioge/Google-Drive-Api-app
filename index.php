@@ -14,14 +14,25 @@ $client->setAccessToken($token);
 #Objektua sortzen degu
 $files = new Soramugi\GoogleDrive\Files($client);
 $file = new Soramugi\GoogleDrive\File($client);
-$titulo = "";
 
 //Carpeta bakoitzeko barruan dauden artxiboak listatzen ditugu, ta karpetak ere.
 foreach ($files->listFiles()->getItems() as $item) {
     if (!$item->getLabels()->getTrashed()) {
          echo '<td>' ."file : {$item->getTitle()}\n". '</td>';
+         echo "<br>";
     }
 }
-$files->listFiles()->getItems()->getTitle();
+
+echo "EL archivo buscado:";
+echo "<br>";
+foreach($files->searchTitle('Empresa') as $file) {
+    if ($file->isFolder()) {
+        echo $file->getTitle() . "\n";
+        echo "<br>";
+        echo $file->getMimeType() . "\n";
+        echo "<br>";
+        echo $file->getId() . "\n";
+    }
+}
 ?> 
 </html>
